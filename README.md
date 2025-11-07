@@ -23,7 +23,8 @@ Um dos principais objetivos analíticos era isolar o impacto dos 3 produtos prin
 Primeiro, foi criada uma medida simples para o total de vendas, que serve como base para todos os outros cálculos.
 
 ```dax
-Total Sales = SUM(financials[Sales])```
+Total Sales = SUM(financials[Sales])
+```
 
 Em seguida, foi criada a medida principal usando CALCULATE para modificar o contexto do filtro. A função TOPN filtra os 3 produtos principais, e KEEPFILTERS é usado para garantir que este novo filtro (Top 3) seja aplicado em conjunto com filtros externos, em vez de sobrescrevê-los.
 
@@ -39,12 +40,14 @@ CALCULATE(
             DESC
         )
     )
-)```
+)
+```
 
 E então fiz a medida "outros" que subtrai o Top 3 do total, isolando os outros produtos fora do top 3
 
 ```dax
-Sales Others Product = [Total Sales] - [Sales Top 3 Product]```
+Sales Others Product = [Total Sales] - [Sales Top 3 Product]
+```
 
 ---
 
